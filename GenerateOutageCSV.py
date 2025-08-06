@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from mpi4py import MPI
 
-# Regions 
+# Regions 181G
 #   1: Pacific
 #   2: Mountain
 #   3: West North Central
@@ -94,7 +94,7 @@ def readEagle(years = [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021], drop_col
     cleaned_eaglei = pd.DataFrame()
     for year in years:
         #eagle_csv = pd.read_csv(f'../../Project3/Data/eaglei_outages/eaglei_outages_{year}.csv')
-        eagle_csv = pd.read_csv(f'../../Project3/Data/eaglei_outages/eaglei_outages_2014.csv')
+        eagle_csv = pd.read_csv(f'../../Project3/Data/eaglei_outages/eaglei_outages_{year}.csv')
         cleaned_eaglei = pd.concat([cleaned_eaglei, eagle_csv], ignore_index = True)
         cleaned_eaglei.drop(drop_columns, axis=1, inplace=True)    # Leaves fips, sum, run_start_time
     
