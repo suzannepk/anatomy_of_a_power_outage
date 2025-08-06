@@ -86,13 +86,15 @@ month_days = {
     12: 31  # December
 }
 
-latlong = pd.read_csv(f'OtherCSVs/us_county_latlng.csv')
+#latlong = pd.read_csv(f'OtherCSVs/us_county_latlng.csv')
+latlong = pd.read_csv(f'../../Project3/Data/OtherCSVs/us_county_latlng.csv')
 latlong['fips_code_str'] = latlong['fips_code'].astype(str)
 
 def readEagle(years = [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021], drop_columns = ['county', 'state']): 
     cleaned_eaglei = pd.DataFrame()
     for year in years:
-        eagle_csv = pd.read_csv(f'eaglei_outages/eaglei_outages_{year}.csv')
+        #eagle_csv = pd.read_csv(f'../../Project3/Data/eaglei_outages/eaglei_outages_{year}.csv')
+        eagle_csv = pd.read_csv(f'../../Project3/Data/eaglei_outages/eaglei_outages_2014.csv')
         cleaned_eaglei = pd.concat([cleaned_eaglei, eagle_csv], ignore_index = True)
         cleaned_eaglei.drop(drop_columns, axis=1, inplace=True)    # Leaves fips, sum, run_start_time
     
@@ -280,7 +282,7 @@ def main(args):
     
         pd.set_option('display.max_rows', None)
         pd.set_option('display.max_columns', None)
-        aggOutagesDF.to_csv(f'OutageCSVs/{start_year}-{end_year}-Outages.csv', index=False, header=True)
+        aggOutagesDF.to_csv(f'Data/OutageCSVs/{start_year}-{end_year}-Outages.csv', index=False, header=True)
         print(f"Total time: {end_time - start_time} seconds")
 
 if __name__ == "__main__":
