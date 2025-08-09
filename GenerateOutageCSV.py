@@ -87,14 +87,13 @@ month_days = {
 }
 
 #latlong = pd.read_csv(f'OtherCSVs/us_county_latlng.csv')
-latlong = pd.read_csv(f'../../Project3/Data/OtherCSVs/us_county_latlng.csv')
+latlong = pd.read_csv(f'/global/cfs/cdirs/m4388/Project3/Data/OtherCSVs/us_county_latlng.csv')
 latlong['fips_code_str'] = latlong['fips_code'].astype(str)
 
 def readEagle(years = [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021], drop_columns = ['county', 'state']): 
     cleaned_eaglei = pd.DataFrame()
     for year in years:
-        #eagle_csv = pd.read_csv(f'../../Project3/Data/eaglei_outages/eaglei_outages_{year}.csv')
-        eagle_csv = pd.read_csv(f'../../Project3/Data/eaglei_outages/eaglei_outages_{year}.csv')
+        eagle_csv = pd.read_csv(f'/global/cfs/cdirs/m4388/Project3/Data/eaglei_outages/eaglei_outages_{year}.csv')
         cleaned_eaglei = pd.concat([cleaned_eaglei, eagle_csv], ignore_index = True)
         cleaned_eaglei.drop(drop_columns, axis=1, inplace=True)    # Leaves fips, sum, run_start_time
     
